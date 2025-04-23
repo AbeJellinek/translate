@@ -86,10 +86,10 @@ Zotero.Debug = new function () {
 		
 		var output = '(' + level + ')' + deltaStr + ': ' + message;
 		if (isSlow) {
-			console.log(output, "color: red;", "");
+			queueMicrotask(console.log.bind(console, output, "color: red;", ""));
 		}
 		else {
-			console.log(output);
+			queueMicrotask(console.log.bind(console, output));
 		}
 		
 		if (_store) {
